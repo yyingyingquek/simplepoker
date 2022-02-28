@@ -1,0 +1,152 @@
+.Hearts-icon {
+  background-image: url("hearts.png");
+}
+.Diamonds-icon {
+  background-image: url("diamonds.png");
+}
+.Clubs-icon {
+  background-image: url("clubs.png");
+}
+.Spades-icon {
+  background-image: url("spades.png");
+}
+
+.suit-icon {
+  width: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 20px;
+}
+
+.poker-room {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.poker-table {
+  height: 400px;
+  width: 800px;
+  background-color: green;
+  border: solid 20px #333;
+  margin: 0 auto;
+  border-radius: 300px;
+  position: relative;
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+#name-1,
+#name-2 {
+  border: 1px solid blue;
+  height: 1em;
+}
+
+.button-container {
+  border: 1px solid red;
+  width: 400px;
+  height: 100px;
+  background-color: #3498db;
+  position: relative;
+  margin: auto;
+}
+
+.button-container .buttons {
+  border: 1px solid yellow;
+  text-align: center;
+}
+
+.poker-table .player {
+  border: 1px solid black;
+  position: relative;
+  height: 100%;
+  text-align: center;
+}
+
+.poker-table .seat {
+  border: 1px solid teal;
+  height: 100px;
+  width: 100px;
+  /* background-color: red; */
+  position: absolute;
+}
+
+.cards {
+  height: 45px;
+  width: 100%;
+  display: flex;
+  border: 1px solid bisque;
+  border-radius: 5px;
+  justify-content: center;
+}
+
+.poker-table .seat.seat-one {
+  border: 1px solid palevioletred;
+  right: -00px;
+  top: 40%;
+}
+
+.poker-table .seat.seat-one .player .cards {
+  border: 1px solid orange;
+  position: absolute;
+  right: 100px;
+  width: 80px;
+  transform: rotate(-90deg);
+}
+
+.poker-table .seat.seat-two {
+  border: 1px solid indigo;
+  left: 5px;
+  top: 40%;
+}
+.poker-table .seat.seat-two .player .cards {
+  border: 1px solid pink;
+  position: absolute;
+  left: 100px;
+  transform: rotate(90deg);
+  width: 80px;
+}
+
+#card-1,
+#card-2 {
+  border: 1px solid slateblue;
+}
+
+#card-3,
+#card-4 {
+  border: 1px solid sienna;
+}
+
+.community-cards,
+.add-for-players {
+  display: flex;
+  justify-content: center;
+  border: 1px solid cadetblue;
+}
+
+#card-a,
+#card-b,
+#card-c,
+#card-d,
+#card-e {
+  padding: 10px;
+  border: 1px solid aquamarine;
+}
+
+.player1-selected {
+  border: 1px solid lightcyan;
+  position: relative;
+  top: 100px;
+  left: 450px;
+  width: 10rem;
+}
+
+.player2-selected {
+  border: 1px solid navajowhite;
+  position: absolute;
+  top: 190px;
+  left: 200px;
+  width: 10rem;
+}
