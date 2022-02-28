@@ -500,14 +500,53 @@ const pokerHands = {
   fullHouse: "Full House",
   four: "Four of a kind",
   straightFlush: "Straight Flush!",
+  royalFlush: "ROYAL FLUSH!!!!!!",
 };
 
 function checkHandPikachu() {
-  const card1 = p1Hand[0];
-  const card2 = p1Hand[1];
-  const card3 = p1Hand[2];
-  const card4 = p1Hand[3];
-  const card5 = p1Hand[4];
+  const card1s = player1Object[0].suit; // check card 1 suit
+  const card1f = player1Object[0].face; // check card 1 face value
+  const card2s = player1Object[1].suit;
+  const card2f = player1Object[1].face;
+  const card3s = player1Object[2].suit;
+  const card3f = player1Object[2].face;
+  const card4s = player1Object[3].suit;
+  const card4f = player1Object[3].face;
+  const card5s = player1Object[4].suit;
+  const card5f = player1Object[4].face;
 
-  // check for high card
+  // royal flush
+  // straight flush
+  // four of a kind
+  if (
+    (card1f === card2f && card1f === card3f && card1f === card4f) ||
+    (card1f === card2f && card1f === card3f && card1f === card5f) ||
+    (card1f === card2f && card1f === card4f && card1f === card5f) ||
+    (card2f === card3f && card2f === card4f && card2f === card5f)
+  ) {
+    let response = pokerHands.four;
+    document.querySelector(
+      ".pikachu-results"
+    ).innerText = `Pikachu has ${response}`;
+  }
+  // full house
+  // flush
+  if (
+    card1s === card2s &&
+    card1s === card3s &&
+    card1s === card4s &&
+    card1s === card5s
+  ) {
+    let response = pokerHands.flush;
+    document.querySelector(
+      ".pikachu-results"
+    ).innerText = `Pikachu has ${response}`;
+  }
+  // straight
+  // three of a kind
+  if (card1f === card2f && card1f === card3f) {
+  }
+  // two pairs
+  // one pair
+  // high card
 }
