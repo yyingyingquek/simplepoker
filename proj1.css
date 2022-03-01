@@ -150,3 +150,27 @@
   left: 200px;
   width: 150px;
 }
+
+/* card rendering */
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px #555555 solid;
+  border-radius: 10px;
+  margin: 1px;
+  padding: 1px;
+}
+
+.card {
+  border: 1px solid black;
+  margin: 2px;
+}
+
+.card.red {
+  color: red;
+}
+
+.card.black {
+  color: black;
+}

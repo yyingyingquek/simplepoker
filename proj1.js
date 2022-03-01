@@ -17,6 +17,18 @@ class Cards {
   constructor(suit, value, face) {
     (this.suit = suit), (this.value = value), (this.face = face);
   }
+
+  get color() {
+    return this.suit === "Clubs" || this.suit === "Spades" ? "black" : "red";
+  }
+
+  getHTML() {
+    const cardDiv = document.createElement("div");
+    cardDiv.innerText = `${this.face} ${this.suit}`;
+    cardDiv.classList.add("card", this.color);
+    cardDiv.dataset.value = `${this.face} ${this.suit}`;
+    return cardDiv;
+  }
 }
 
 function createDeck() {
@@ -56,10 +68,14 @@ function dealCardsToPlayers() {
   p1Hand.push(cardPlaceholder1, cardPlaceholder2);
   p2Hand.push(cardPlaceholder3, cardPlaceholder4);
 
-  card1.innerHTML = Object.values(cardPlaceholder1);
-  card2.innerHTML = Object.values(cardPlaceholder2);
-  card3.innerHTML = Object.values(cardPlaceholder3);
-  card4.innerHTML = Object.values(cardPlaceholder4);
+  // card1.innerHTML = Object.values(cardPlaceholder1);
+  // card2.innerHTML = Object.values(cardPlaceholder2);
+  // card3.innerHTML = Object.values(cardPlaceholder3);
+  // card4.innerHTML = Object.values(cardPlaceholder4);
+  card1.appendChild(cardPlaceholder1.getHTML());
+  card2.appendChild(cardPlaceholder2.getHTML());
+  card3.appendChild(cardPlaceholder3.getHTML());
+  card4.appendChild(cardPlaceholder4.getHTML());
 
   console.log(deck);
   console.log(p1Hand);
@@ -69,7 +85,7 @@ function dealCardsToPlayers() {
 // deal community cards, for now deal all 5 first and check options only for both players
 function dealCommunityCards(e) {
   e.preventDefault();
-  if (e.target === document.querySelector(".check")) {
+  if (e.target === document.querySelector(".deal")) {
     // burn 1 card first before dealing
     deck.shift();
     // deal here
@@ -101,17 +117,22 @@ function dealCommunityCards(e) {
     );
 
     // print out the card values
-    cardA.innerHTML = Object.values(cardPlaceholderA);
-    cardB.innerHTML = Object.values(cardPlaceholderB);
-    cardC.innerHTML = Object.values(cardPlaceholderC);
-    cardD.innerHTML = Object.values(cardPlaceholderD);
-    cardE.innerHTML = Object.values(cardPlaceholderE);
+    // cardA.innerHTML = Object.values(cardPlaceholderA);
+    // cardB.innerHTML = Object.values(cardPlaceholderB);
+    // cardC.innerHTML = Object.values(cardPlaceholderC);
+    // cardD.innerHTML = Object.values(cardPlaceholderD);
+    // cardE.innerHTML = Object.values(cardPlaceholderE);
+    cardA.appendChild(cardPlaceholderA.getHTML());
+    cardB.appendChild(cardPlaceholderB.getHTML());
+    cardC.appendChild(cardPlaceholderC.getHTML());
+    cardD.appendChild(cardPlaceholderD.getHTML());
+    cardE.appendChild(cardPlaceholderE.getHTML());
   }
   console.log(p1Hand);
   console.log(p2Hand);
   console.log(deck);
 }
-document.querySelector(".check").addEventListener("click", dealCommunityCards);
+document.querySelector(".deal").addEventListener("click", dealCommunityCards);
 
 // add div for btn & btn for player 1
 // not sure why not working so leave it first
@@ -167,8 +188,16 @@ function startGame() {
   player(1, "Pikachu");
   player(2, "Eevee");
 
+  const player1Img = document.createElement("img");
+  player1Img.setAttribute("src", "img/pikachu_copy.png");
+  document.querySelector("#player1").appendChild(player1Img);
+
   const player1 = document.querySelector("#name-1");
   player1.innerHTML = players[0].name;
+
+  const player2Img = document.createElement("img");
+  player2Img.setAttribute("src", "img/eevee_copy.png");
+  document.querySelector("#player2").appendChild(player2Img);
 
   const player2 = document.querySelector("#name-2");
   player2.innerHTML = players[1].name;
@@ -176,6 +205,8 @@ function startGame() {
   createDeck();
   shuffleDeck();
   dealCardsToPlayers();
+  testRender();
+  console.log(deck[0]);
 }
 
 ////////////////////////////////
@@ -199,10 +230,11 @@ document
     player1Hand.push(chosen1);
     player1Object.push(chosen1Object);
 
-    console.log(player1Hand);
+    // console.log(player1Hand);
     console.log(player1Object);
-    printPlayer1Hand.innerText = chosen1;
-    player1Selected.appendChild(printPlayer1Hand);
+    // printPlayer1Hand.innerText = chosen1;
+    // player1Selected.appendChild(printPlayer1Hand);
+    player1Selected.appendChild(p1Hand[0].getHTML());
   });
 
 document
@@ -218,10 +250,11 @@ document
     player1Hand.push(chosen2);
     player1Object.push(chosen2Object);
 
-    console.log(player1Hand);
+    // console.log(player1Hand);
     console.log(player1Object);
-    printPlayer1Hand.innerText = chosen2;
-    player1Selected.appendChild(printPlayer1Hand);
+    // printPlayer1Hand.innerText = chosen2;
+    // player1Selected.appendChild(printPlayer1Hand);
+    player1Selected.appendChild(p1Hand[1].getHTML());
   });
 
 // if chosing from community
@@ -236,11 +269,12 @@ document.querySelector("#pikachu-add1").addEventListener("click", (e) => {
 
     player1Hand.push(chosenA);
     player1Object.push(chosenAObject);
-    console.log(player1Hand);
+    // console.log(player1Hand);
     console.log(player1Object);
 
-    printPlayer1Hand.innerText = chosenA;
-    player1Selected.appendChild(printPlayer1Hand);
+    // printPlayer1Hand.innerText = chosenA;
+    // player1Selected.appendChild(printPlayer1Hand);
+    player1Selected.appendChild(p1Hand[2].getHTML());
   }
   if (player1Hand.length > 5) {
     alert("you have more than 5 cards");
@@ -258,11 +292,12 @@ document.querySelector("#pikachu-add2").addEventListener("click", (e) => {
 
     player1Hand.push(chosenB);
     player1Object.push(chosenBObject);
-    console.log(player1Hand);
+    // console.log(player1Hand);
     console.log(player1Object);
 
-    printPlayer1Hand.innerText = chosenB;
-    player1Selected.appendChild(printPlayer1Hand);
+    // printPlayer1Hand.innerText = chosenB;
+    // player1Selected.appendChild(printPlayer1Hand);
+    player1Selected.appendChild(p1Hand[3].getHTML());
   }
   if (player1Hand.length > 5) {
     alert("you have more than 5 cards");
@@ -280,11 +315,12 @@ document.querySelector("#pikachu-add3").addEventListener("click", (e) => {
 
     player1Hand.push(chosenC);
     player1Object.push(chosenCObject);
-    console.log(player1Hand);
+    // console.log(player1Hand);
     console.log(player1Object);
 
-    printPlayer1Hand.innerText = chosenC;
-    player1Selected.appendChild(printPlayer1Hand);
+    // printPlayer1Hand.innerText = chosenC;
+    // player1Selected.appendChild(printPlayer1Hand);
+    player1Selected.appendChild(p1Hand[4].getHTML());
   }
   if (player1Hand.length > 5) {
     alert("you have more than 5 cards");
@@ -302,11 +338,12 @@ document.querySelector("#pikachu-add4").addEventListener("click", (e) => {
 
     player1Hand.push(chosenD);
     player1Object.push(chosenDObject);
-    console.log(player1Hand);
+    // console.log(player1Hand);
     console.log(player1Object);
 
-    printPlayer1Hand.innerText = chosenD;
-    player1Selected.appendChild(printPlayer1Hand);
+    // printPlayer1Hand.innerText = chosenD;
+    // player1Selected.appendChild(printPlayer1Hand);
+    player1Selected.appendChild(p1Hand[5].getHTML());
   }
   if (player1Hand.length > 5) {
     alert("you have more than 5 cards");
@@ -324,11 +361,12 @@ document.querySelector("#pikachu-add5").addEventListener("click", (e) => {
 
     player1Hand.push(chosenE);
     player1Object.push(chosenEObject);
-    console.log(player1Hand);
+    // console.log(player1Hand);
     console.log(player1Object);
 
-    printPlayer1Hand.innerText = chosenE;
-    player1Selected.appendChild(printPlayer1Hand);
+    // printPlayer1Hand.innerText = chosenE;
+    // player1Selected.appendChild(printPlayer1Hand);
+    player1Selected.appendChild(p1Hand[6].getHTML());
   }
   if (player1Hand.length > 5) {
     alert("you have more than 5 cards");
@@ -341,8 +379,6 @@ const player2Hand = [];
 const player2Object = [];
 document.querySelector("#card-3").addEventListener("click", (e) => {
   const player2Selected = document.querySelector(".player2-selected");
-  const test = document.querySelector(`#card-3`);
-  if (e.target === test) {
     const printPlayer2Hand = document.createElement("div");
     printPlayer2Hand.className = "player-chosen-hand";
 
@@ -352,11 +388,11 @@ document.querySelector("#card-3").addEventListener("click", (e) => {
     player2Hand.push(chosen1);
     player2Object.push(chosen1Object);
 
-    console.log(player2Hand);
+    // console.log(player2Hand);
     console.log(player2Object);
-    printPlayer2Hand.innerText = chosen1;
-    player2Selected.appendChild(printPlayer2Hand);
-  }
+    // printPlayer2Hand.innerText = chosen1;
+    // player2Selected.appendChild(printPlayer2Hand);
+    player2Selected.appendChild(p2Hand[0].getHTML());
 });
 
 document.querySelector("#card-4").addEventListener("click", (e) => {
@@ -370,11 +406,12 @@ document.querySelector("#card-4").addEventListener("click", (e) => {
   player2Hand.push(chosen2);
   player2Object.push(chosen2Object);
 
-  console.log(player2Hand);
+  // console.log(player2Hand);
   console.log(player2Object);
 
-  printPlayer2Hand.innerText = chosen2;
-  player2Selected.appendChild(printPlayer2Hand);
+  // printPlayer2Hand.innerText = chosen2;
+  // player2Selected.appendChild(printPlayer2Hand);
+  player2Selected.appendChild(p2Hand[1].getHTML());
 });
 
 // if chosing from community
@@ -389,11 +426,12 @@ document.querySelector("#eevee-add1").addEventListener("click", (e) => {
 
     player2Hand.push(chosenA);
     player2Object.push(chosenAObject);
-    console.log(player2Hand);
+    // console.log(player2Hand);
     console.log(player2Object);
 
-    printPlayer2Hand.innerText = chosenA;
-    player2Selected.appendChild(printPlayer2Hand);
+    // printPlayer2Hand.innerText = chosenA;
+    // player2Selected.appendChild(printPlayer2Hand);
+    player2Selected.appendChild(p2Hand[2].getHTML());
   }
   if (player2Hand.length > 5) {
     alert("you have more than 5 cards");
@@ -411,11 +449,12 @@ document.querySelector("#eevee-add2").addEventListener("click", (e) => {
 
     player2Hand.push(chosenB);
     player2Object.push(chosenBObject);
-    console.log(player2Hand);
+    // console.log(player2Hand);
     console.log(player2Object);
 
-    printPlayer2Hand.innerText = chosenB;
-    player2Selected.appendChild(printPlayer2Hand);
+    // printPlayer2Hand.innerText = chosenB;
+    // player2Selected.appendChild(printPlayer2Hand);
+    player2Selected.appendChild(p2Hand[3].getHTML());
   }
   if (player2Hand.length > 5) {
     alert("you have more than 5 cards");
@@ -433,11 +472,12 @@ document.querySelector("#eevee-add3").addEventListener("click", (e) => {
 
     player2Hand.push(chosenC);
     player2Object.push(chosenCObject);
-    console.log(player2Hand);
+    // console.log(player2Hand);
     console.log(player2Object);
 
-    printPlayer2Hand.innerText = chosenC;
-    player2Selected.appendChild(printPlayer2Hand);
+    // printPlayer2Hand.innerText = chosenC;
+    // player2Selected.appendChild(printPlayer2Hand);
+    player2Selected.appendChild(p2Hand[4].getHTML());
   }
   if (player2Hand.length > 5) {
     alert("you have more than 5 cards");
@@ -455,11 +495,12 @@ document.querySelector("#eevee-add4").addEventListener("click", (e) => {
 
     player2Hand.push(chosenD);
     player2Object.push(chosenDObject);
-    console.log(player2Hand);
+    // console.log(player2Hand);
     console.log(player2Object);
 
-    printPlayer2Hand.innerText = chosenD;
-    player2Selected.appendChild(printPlayer2Hand);
+    // printPlayer2Hand.innerText = chosenD;
+    // player2Selected.appendChild(printPlayer2Hand);
+    player2Selected.appendChild(p2Hand[5].getHTML());
   }
   if (player2Hand.length > 5) {
     alert("you have more than 5 cards");
@@ -477,11 +518,12 @@ document.querySelector("#eevee-add5").addEventListener("click", (e) => {
 
     player2Hand.push(chosenE);
     player2Object.push(chosenEObject);
-    console.log(player2Hand);
+    // console.log(player2Hand);
     console.log(player2Object);
 
-    printPlayer2Hand.innerText = chosenE;
-    player2Selected.appendChild(printPlayer2Hand);
+    // printPlayer2Hand.innerText = chosenE;
+    // player2Selected.appendChild(printPlayer2Hand);
+    player2Selected.appendChild(p2Hand[6].getHTML());
   }
   if (player2Hand.length > 5) {
     alert("you have more than 5 cards");
@@ -836,5 +878,23 @@ function checkWinner() {
   } else {
     document.querySelector(".winner").innerText = "It's a draw";
     console.log(`It's a draw!`);
+  }
+}
+
+// card rendering
+
+function testRender() {
+  document.querySelector(".cards-container").innerHTML = "";
+  for (var i = 0; i < deck.length; i++) {
+    var card = document.createElement("div");
+    var icon = " ";
+    if (deck[i].suit == "Hearts") icon = " ♥";
+    else if (deck[i].suit == "Spades") icon = "♠";
+    else if (deck[i].suit == "Diamonds") icon = "♦";
+    else icon = "♣";
+
+    card.innerHTML = deck[i].face + " " + icon;
+    card.className = "card";
+    document.querySelector(".cards-container").appendChild(card);
   }
 }
