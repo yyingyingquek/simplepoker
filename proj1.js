@@ -509,14 +509,19 @@ const eeveeHand = [];
 function checkHandPikachu() {
   const card1s = player1Object[0].suit; // check card 1 suit
   const card1f = player1Object[0].face; // check card 1 face value
+  const card1v = player1Object[0].value; // check card 1 actual value - checks for straights
   const card2s = player1Object[1].suit;
   const card2f = player1Object[1].face;
+  const card2v = player1Object[1].value;
   const card3s = player1Object[2].suit;
   const card3f = player1Object[2].face;
+  const card3v = player1Object[1].value;
   const card4s = player1Object[3].suit;
   const card4f = player1Object[3].face;
+  const card4v = player1Object[1].value;
   const card5s = player1Object[4].suit;
   const card5f = player1Object[4].face;
+  const card5v = player1Object[4].value;
 
   // royal flush
   // straight flush
@@ -565,7 +570,7 @@ function checkHandPikachu() {
     console.log(pikachuHand);
   }
   // flush
-  if (
+  else if (
     card1s === card2s &&
     card1s === card3s &&
     card1s === card4s &&
@@ -579,6 +584,19 @@ function checkHandPikachu() {
     console.log(pikachuHand);
   }
   // straight
+  else if (
+    card1v === card2v - 1 &&
+    card1v === card3v - 2 &&
+    card1v === card4v - 3 &&
+    card1v === card5v - 4
+  ) {
+    let response = pokerHands[4].straight;
+    document.querySelector(
+      ".pikachu-results"
+    ).innerText = `Pikachu has ${response}`;
+    pikachuHand.push(pokerHands[4]);
+    console.log(pikachuHand);
+  }
   // three of a kind
   else if (
     (card1f === card2f && card1f === card3f) ||
@@ -649,16 +667,21 @@ function checkHandPikachu() {
 }
 
 function checkHandEevee() {
-  const card1s = player2Object[0].suit; // check card 1 suit
-  const card1f = player2Object[0].face; // check card 1 face value
-  const card2s = player2Object[1].suit;
-  const card2f = player2Object[1].face;
-  const card3s = player2Object[2].suit;
-  const card3f = player2Object[2].face;
-  const card4s = player2Object[3].suit;
-  const card4f = player2Object[3].face;
-  const card5s = player2Object[4].suit;
-  const card5f = player2Object[4].face;
+  const card1s = player1Object[0].suit; // check card 1 suit
+  const card1f = player1Object[0].face; // check card 1 face value
+  const card1v = player1Object[0].value; // check card 1 actual value - checks for straights
+  const card2s = player1Object[1].suit;
+  const card2f = player1Object[1].face;
+  const card2v = player1Object[1].value;
+  const card3s = player1Object[2].suit;
+  const card3f = player1Object[2].face;
+  const card3v = player1Object[1].value;
+  const card4s = player1Object[3].suit;
+  const card4f = player1Object[3].face;
+  const card4v = player1Object[1].value;
+  const card5s = player1Object[4].suit;
+  const card5f = player1Object[4].face;
+  const card5v = player1Object[4].value;
 
   // royal flush
   // straight flush
@@ -707,7 +730,7 @@ function checkHandEevee() {
     console.log(eeveeHand);
   }
   // flush
-  if (
+  else if (
     card1s === card2s &&
     card1s === card3s &&
     card1s === card4s &&
@@ -721,6 +744,19 @@ function checkHandEevee() {
     console.log(eeveeHand);
   }
   // straight
+  else if (
+    card1s === card2s &&
+    card1s === card3s &&
+    card1s === card4s &&
+    card1s === card5s
+  ) {
+    let response = pokerHands[4].straight;
+    document.querySelector(
+      ".eevee-results"
+    ).innerText = `Eevee has ${response}`;
+    eeveeHand.push(pokerHands[4]);
+    console.log(eeveeHand);
+  }
   // three of a kind
   else if (
     (card1f === card2f && card1f === card3f) ||
