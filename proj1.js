@@ -630,3 +630,131 @@ function checkHandPikachu() {
     ).innerText = `Pikachu has ${response}`;
   }
 }
+
+function checkHandEevee() {
+  const card1s = player2Object[0].suit; // check card 1 suit
+  const card1f = player2Object[0].face; // check card 1 face value
+  const card2s = player2Object[1].suit;
+  const card2f = player2Object[1].face;
+  const card3s = player2Object[2].suit;
+  const card3f = player2Object[2].face;
+  const card4s = player2Object[3].suit;
+  const card4f = player2Object[3].face;
+  const card5s = player2Object[4].suit;
+  const card5f = player2Object[4].face;
+
+  // royal flush
+  // straight flush
+  // four of a kind
+  if (
+    (card1f === card2f && card1f === card3f && card1f === card4f) ||
+    (card1f === card2f && card1f === card3f && card1f === card5f) ||
+    (card1f === card2f && card1f === card4f && card1f === card5f) ||
+    (card2f === card3f && card2f === card4f && card2f === card5f)
+  ) {
+    let response = pokerHands.four;
+    document.querySelector(
+      ".eevee-results"
+    ).innerText = `Eevee has ${response}`;
+  }
+  // full house
+  else if (
+    ((card1f === card2f && card1f === card3f) ||
+      (card1f === card2f && card1f === card4f) ||
+      (card1f === card2f && card1f === card5f) ||
+      (card1f === card3f && card1f === card4f) ||
+      (card1f === card3f && card1f === card5f) ||
+      (card1f === card4f && card1f === card5f) ||
+      (card2f === card3f && card2f === card4f) ||
+      (card2f === card3f && card2f === card5f) ||
+      (card2f === card4f && card2f === card5f) ||
+      (card3f === card4f && card3f === card5f)) &&
+    (card1f === card2f ||
+      card1f === card3f ||
+      card1f === card4f ||
+      card1f === card5f ||
+      card2f === card3f ||
+      card2f === card4f ||
+      card2f === card5f ||
+      card3f === card4f ||
+      card3f === card5f ||
+      card4f === card5f)
+  ) {
+    let response = pokerHands.fullHouse;
+    document.querySelector(
+      ".eevee-results"
+    ).innerText = `Eevee has ${response}`;
+  }
+  // flush
+  if (
+    card1s === card2s &&
+    card1s === card3s &&
+    card1s === card4s &&
+    card1s === card5s
+  ) {
+    let response = pokerHands.flush;
+    document.querySelector(
+      ".eevee-results"
+    ).innerText = `Eevee has ${response}`;
+  }
+  // straight
+  // three of a kind
+  else if (
+    (card1f === card2f && card1f === card3f) ||
+    (card1f === card2f && card1f === card4f) ||
+    (card1f === card2f && card1f === card5f) ||
+    (card1f === card3f && card1f === card4f) ||
+    (card1f === card3f && card1f === card5f) ||
+    (card1f === card4f && card1f === card5f) ||
+    (card2f === card3f && card2f === card4f) ||
+    (card2f === card3f && card2f === card5f) ||
+    (card2f === card4f && card2f === card5f) ||
+    (card3f === card4f && card3f === card5f)
+  ) {
+    let response = pokerHands.threeOfAKind;
+    document.querySelector(
+      ".eevee-results"
+    ).innerText = `Eevee has ${response}`;
+  }
+  // two pairs
+  else if (
+    (card1f === card2f ||
+      card1f === card3f ||
+      card1f === card4f ||
+      card1f === card5f ||
+      card2f === card3f ||
+      card2f === card4f ||
+      card2f === card5f) &&
+    (card3f === card4f || card3f === card5f || card4f === card5f)
+  ) {
+    let response = pokerHands.twoPair;
+    document.querySelector(
+      ".eevee-results"
+    ).innerText = `Eevee has ${response}`;
+  }
+  // one pair
+  else if (
+    card1f === card2f ||
+    card1f === card3f ||
+    card1f === card4f ||
+    card1f === card5f ||
+    card2f === card3f ||
+    card2f === card4f ||
+    card2f === card5f ||
+    card3f === card4f ||
+    card3f === card5f ||
+    card4f === card5f
+  ) {
+    let response = pokerHands.pair;
+    document.querySelector(
+      ".eevee-results"
+    ).innerText = `Eevee has ${response}`;
+  }
+  // high card
+  else {
+    let response = pokerHands.highCard;
+    document.querySelector(
+      ".eevee-results"
+    ).innerText = `Eevee has ${response}`;
+  }
+}
