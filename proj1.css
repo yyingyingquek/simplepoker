@@ -1,22 +1,6 @@
-/* .Hearts-icon {
-  background-image: url("hearts.png");
-}
-.Diamonds-icon {
-  background-image: url("diamonds.png");
-}
-.Clubs-icon {
-  background-image: url("clubs.png");
-}
-.Spades-icon {
-  background-image: url("spades.png");
-} */
-
-.suit-icon {
-  width: 100%;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  height: 20px;
+* {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 .poker-room {
@@ -40,33 +24,37 @@
 
 #name-1,
 #name-2 {
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
   height: 1em;
-}
-
-.button-container {
-  border: 1px solid red;
-  width: 600px;
-  height: 100px;
-  background-color: #3498db;
-  position: relative;
-  margin: auto;
-}
-
-.button-container .buttons {
-  border: 1px solid yellow;
+  justify-content: center;
+  align-items: center;
   text-align: center;
 }
 
+.button-container {
+  /* border: 1px solid red; */
+  width: 600px;
+  height: 100px;
+  /* background-color: cornflowerblue; */
+  position: relative;
+  margin: auto;
+  text-align: center;
+}
+
+/* .button-container .buttons {
+  border: 1px solid yellow;
+  text-align: center;
+} */
+
 .poker-table .player {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   position: relative;
   height: 100%;
   text-align: center;
 }
 
 .poker-table .seat {
-  border: 1px solid teal;
+  /* border: 1px solid teal; */
   height: 100px;
   width: 100px;
   /* background-color: red; */
@@ -74,22 +62,22 @@
 }
 
 .cards {
-  height: 45px;
+  height: 50px;
   width: 100%;
   display: flex;
-  border: 1px solid bisque;
-  border-radius: 5px;
+  /* border: 1px solid bisque; */
+  /* border-radius: 5px; */
   justify-content: center;
 }
 
 .poker-table .seat.seat-one {
-  border: 1px solid palevioletred;
+  /* border: 1px solid palevioletred; */
   right: -00px;
   top: 40%;
 }
 
 .poker-table .seat.seat-one .player .cards {
-  border: 1px solid orange;
+  /* border: 1px solid orange; */
   position: absolute;
   right: 100px;
   width: 80px;
@@ -97,19 +85,19 @@
 }
 
 .poker-table .seat.seat-two {
-  border: 1px solid indigo;
+  /* border: 1px solid indigo; */
   left: 5px;
   top: 40%;
 }
 .poker-table .seat.seat-two .player .cards {
-  border: 1px solid pink;
+  /* border: 1px solid pink; */
   position: absolute;
   left: 100px;
   transform: rotate(90deg);
   width: 80px;
 }
 
-#card-1,
+/* #card-1,
 #card-2 {
   border: 1px solid slateblue;
 }
@@ -117,13 +105,21 @@
 #card-3,
 #card-4 {
   border: 1px solid sienna;
+} */
+
+.community-cards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid cadetblue; */
 }
 
-.community-cards,
 .add-for-players {
   display: flex;
   justify-content: center;
-  border: 1px solid cadetblue;
+  align-items: center;
+  /* border: 1px solid blue; */
+  margin: 00px 50px 00px 80px;
 }
 
 #card-a,
@@ -131,40 +127,40 @@
 #card-c,
 #card-d,
 #card-e {
-  padding: 10px;
-  border: 1px solid aquamarine;
+  /* padding: 10px; */
+  /* border: 1px solid aquamarine; */
+  margin: 20px 50px 2px 50px;
 }
 
 .player1-selected {
-  border: 1px solid lightcyan;
+  display: flex;
+  /* border: 1px solid lightcyan; */
   position: relative;
   top: 100px;
   left: 450px;
-  width: 150px;
+  width: 200px;
 }
 
 .player2-selected {
-  border: 1px solid navajowhite;
-  position: absolute;
-  top: 190px;
-  left: 200px;
-  width: 150px;
-}
-
-/* card rendering */
-
-.cards-container {
   display: flex;
-  flex-wrap: wrap;
-  border: 1px #555555 solid;
-  border-radius: 10px;
-  margin: 1px;
-  padding: 1px;
+  /* border: 1px solid navajowhite; */
+  position: absolute;
+  top: 220px;
+  left: 200px;
+  width: 200px;
 }
 
 .card {
   border: 1px solid black;
   margin: 2px;
+  border-radius: 3px;
+  width: 30px;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  background-color: white;
+  text-align: center;
 }
 
 .card.red {

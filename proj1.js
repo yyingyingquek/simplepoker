@@ -10,12 +10,16 @@ function player(id, playerName) {
 let deck = [];
 
 const suits = ["Diamonds", "Clubs", "Hearts", "Spades"];
+const icon = ["♦", "♣", "♥", "♠"];
 const value = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
-const face = [2, 3, 4, 5, 6, 7, 8, 9, 10, "Jack", "Queen", "King", "Ace"]; // face of the card
+const face = [2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A"]; // face of the card
 
 class Cards {
-  constructor(suit, value, face) {
-    (this.suit = suit), (this.value = value), (this.face = face);
+  constructor(suit, icon, value, face) {
+    (this.suit = suit),
+      (this.icon = icon),
+      (this.value = value),
+      (this.face = face);
   }
 
   get color() {
@@ -24,7 +28,7 @@ class Cards {
 
   getHTML() {
     const cardDiv = document.createElement("div");
-    cardDiv.innerText = `${this.face} ${this.suit}`;
+    cardDiv.innerText = `${this.face} ${this.icon}`;
     cardDiv.classList.add("card", this.color);
     cardDiv.dataset.value = `${this.face} ${this.suit}`;
     return cardDiv;
@@ -34,7 +38,7 @@ class Cards {
 function createDeck() {
   for (let i = 0; i < suits.length; i++) {
     for (let j = 0; j < value.length; j++) {
-      deck.push(new Cards(suits[i], value[j], face[j]));
+      deck.push(new Cards(suits[i], icon[i], value[j], face[j]));
     }
   }
   console.log(deck);
@@ -205,7 +209,6 @@ function startGame() {
   createDeck();
   shuffleDeck();
   dealCardsToPlayers();
-  testRender();
   console.log(deck[0]);
 }
 
@@ -379,20 +382,20 @@ const player2Hand = [];
 const player2Object = [];
 document.querySelector("#card-3").addEventListener("click", (e) => {
   const player2Selected = document.querySelector(".player2-selected");
-    const printPlayer2Hand = document.createElement("div");
-    printPlayer2Hand.className = "player-chosen-hand";
+  const printPlayer2Hand = document.createElement("div");
+  printPlayer2Hand.className = "player-chosen-hand";
 
-    const chosen1 = Object.values(p2Hand[0]);
-    const chosen1Object = p2Hand[0];
+  const chosen1 = Object.values(p2Hand[0]);
+  const chosen1Object = p2Hand[0];
 
-    player2Hand.push(chosen1);
-    player2Object.push(chosen1Object);
+  player2Hand.push(chosen1);
+  player2Object.push(chosen1Object);
 
-    // console.log(player2Hand);
-    console.log(player2Object);
-    // printPlayer2Hand.innerText = chosen1;
-    // player2Selected.appendChild(printPlayer2Hand);
-    player2Selected.appendChild(p2Hand[0].getHTML());
+  // console.log(player2Hand);
+  console.log(player2Object);
+  // printPlayer2Hand.innerText = chosen1;
+  // player2Selected.appendChild(printPlayer2Hand);
+  player2Selected.appendChild(p2Hand[0].getHTML());
 });
 
 document.querySelector("#card-4").addEventListener("click", (e) => {
@@ -709,21 +712,21 @@ function checkHandPikachu() {
 }
 
 function checkHandEevee() {
-  const card1s = player1Object[0].suit; // check card 1 suit
-  const card1f = player1Object[0].face; // check card 1 face value
-  const card1v = player1Object[0].value; // check card 1 actual value - checks for straights
-  const card2s = player1Object[1].suit;
-  const card2f = player1Object[1].face;
-  const card2v = player1Object[1].value;
-  const card3s = player1Object[2].suit;
-  const card3f = player1Object[2].face;
-  const card3v = player1Object[1].value;
-  const card4s = player1Object[3].suit;
-  const card4f = player1Object[3].face;
-  const card4v = player1Object[1].value;
-  const card5s = player1Object[4].suit;
-  const card5f = player1Object[4].face;
-  const card5v = player1Object[4].value;
+  const card1s = player2Object[0].suit; // check card 1 suit
+  const card1f = player2Object[0].face; // check card 1 face value
+  const card1v = player2Object[0].value; // check card 1 actual value - checks for straights
+  const card2s = player2Object[1].suit;
+  const card2f = player2Object[1].face;
+  const card2v = player2Object[1].value;
+  const card3s = player2Object[2].suit;
+  const card3f = player2Object[2].face;
+  const card3v = player2Object[1].value;
+  const card4s = player2Object[3].suit;
+  const card4f = player2Object[3].face;
+  const card4v = player2Object[1].value;
+  const card5s = player2Object[4].suit;
+  const card5f = player2Object[4].face;
+  const card5v = player2Object[4].value;
 
   // royal flush
   // straight flush
@@ -787,15 +790,15 @@ function checkHandEevee() {
   }
   // straight
   else if (
-    card1s === card2s &&
-    card1s === card3s &&
-    card1s === card4s &&
-    card1s === card5s
+    card1v === card2v - 1 &&
+    card1v === card3v - 2 &&
+    card1v === card4v - 3 &&
+    card1v === card5v - 4
   ) {
     let response = pokerHands[4].straight;
     document.querySelector(
       ".eevee-results"
-    ).innerText = `Eevee has ${response}`;
+    ).innerText = `eevee has ${response}`;
     eeveeHand.push(pokerHands[4]);
     console.log(eeveeHand);
   }
@@ -878,23 +881,5 @@ function checkWinner() {
   } else {
     document.querySelector(".winner").innerText = "It's a draw";
     console.log(`It's a draw!`);
-  }
-}
-
-// card rendering
-
-function testRender() {
-  document.querySelector(".cards-container").innerHTML = "";
-  for (var i = 0; i < deck.length; i++) {
-    var card = document.createElement("div");
-    var icon = " ";
-    if (deck[i].suit == "Hearts") icon = " ♥";
-    else if (deck[i].suit == "Spades") icon = "♠";
-    else if (deck[i].suit == "Diamonds") icon = "♦";
-    else icon = "♣";
-
-    card.innerHTML = deck[i].face + " " + icon;
-    card.className = "card";
-    document.querySelector(".cards-container").appendChild(card);
   }
 }
