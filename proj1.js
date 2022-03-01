@@ -490,18 +490,21 @@ document.querySelector("#eevee-add5").addEventListener("click", (e) => {
 
 // comparing best 5 cards
 
-const pokerHands = {
-  highCard: "Win with high card",
-  pair: "A pair",
-  twoPair: "Two pairs",
-  threeOfAKind: "Three of a kind",
-  straight: "Straight",
-  flush: "Flush",
-  fullHouse: "Full House",
-  four: "Four of a kind",
-  straightFlush: "Straight Flush!",
-  royalFlush: "ROYAL FLUSH!!!!!!",
-};
+const pokerHands = [
+  { highCard: "A high card", strength: 0 },
+  { pair: "A pair", strength: 1 },
+  { twoPair: "Two pairs", strength: 2 },
+  { threeOfAKind: "Three of a kind", strength: 3 },
+  { straight: "Straight", strength: 4 },
+  { flush: "Flush", strength: 5 },
+  { fullHouse: "Full House", strength: 6 },
+  { four: "Four of a kind", strength: 7 },
+  { straightFlush: "Straight Flush!", strength: 8 },
+  { royalFlush: "ROYAL FLUSH!!!!!!", strength: 9 },
+];
+
+const pikachuHand = [];
+const eeveeHand = [];
 
 function checkHandPikachu() {
   const card1s = player1Object[0].suit; // check card 1 suit
@@ -524,10 +527,12 @@ function checkHandPikachu() {
     (card1f === card2f && card1f === card4f && card1f === card5f) ||
     (card2f === card3f && card2f === card4f && card2f === card5f)
   ) {
-    let response = pokerHands.four;
+    let response = pokerHands[7].four;
     document.querySelector(
       ".pikachu-results"
     ).innerText = `Pikachu has ${response}`;
+    pikachuHand.push(pokerHands[7]);
+    console.log(pikachuHand);
   }
   // full house
   else if (
@@ -552,10 +557,12 @@ function checkHandPikachu() {
       card3f === card5f ||
       card4f === card5f)
   ) {
-    let response = pokerHands.fullHouse;
+    let response = pokerHands[6].fullHouse;
     document.querySelector(
       ".pikachu-results"
     ).innerText = `Pikachu has ${response}`;
+    pikachuHand.push(pokerHands[6]);
+    console.log(pikachuHand);
   }
   // flush
   if (
@@ -564,10 +571,12 @@ function checkHandPikachu() {
     card1s === card4s &&
     card1s === card5s
   ) {
-    let response = pokerHands.flush;
+    let response = pokerHands[5].flush;
     document.querySelector(
       ".pikachu-results"
     ).innerText = `Pikachu has ${response}`;
+    pikachuHand.push(pokerHands[5]);
+    console.log(pikachuHand);
   }
   // straight
   // three of a kind
@@ -583,10 +592,12 @@ function checkHandPikachu() {
     (card2f === card4f && card2f === card5f) ||
     (card3f === card4f && card3f === card5f)
   ) {
-    let response = pokerHands.threeOfAKind;
+    let response = pokerHands[3].threeOfAKind;
     document.querySelector(
       ".pikachu-results"
     ).innerText = `Pikachu has ${response}`;
+    pikachuHand.push(pokerHands[3]);
+    console.log(pikachuHand);
   }
   // two pairs
   else if (
@@ -599,10 +610,12 @@ function checkHandPikachu() {
       card2f === card5f) &&
     (card3f === card4f || card3f === card5f || card4f === card5f)
   ) {
-    let response = pokerHands.twoPair;
+    let response = pokerHands[2].twoPair;
     document.querySelector(
       ".pikachu-results"
     ).innerText = `Pikachu has ${response}`;
+    pikachuHand.push(pokerHands[2]);
+    console.log(pikachuHand);
   }
   // one pair
   else if (
@@ -617,17 +630,21 @@ function checkHandPikachu() {
     card3f === card5f ||
     card4f === card5f
   ) {
-    let response = pokerHands.pair;
+    let response = pokerHands[1].pair;
     document.querySelector(
       ".pikachu-results"
     ).innerText = `Pikachu has ${response}`;
+    pikachuHand.push(pokerHands[1]);
+    console.log(pikachuHand);
   }
   // high card
   else {
-    let response = pokerHands.highCard;
+    let response = pokerHands[0].highCard;
     document.querySelector(
       ".pikachu-results"
     ).innerText = `Pikachu has ${response}`;
+    pikachuHand.push(pokerHands[0]);
+    console.log(pikachuHand);
   }
 }
 
@@ -652,10 +669,12 @@ function checkHandEevee() {
     (card1f === card2f && card1f === card4f && card1f === card5f) ||
     (card2f === card3f && card2f === card4f && card2f === card5f)
   ) {
-    let response = pokerHands.four;
+    let response = pokerHands[7].four;
     document.querySelector(
       ".eevee-results"
     ).innerText = `Eevee has ${response}`;
+    eeveeHand.push(pokerHands[7]);
+    console.log(eeveeHand);
   }
   // full house
   else if (
@@ -680,10 +699,12 @@ function checkHandEevee() {
       card3f === card5f ||
       card4f === card5f)
   ) {
-    let response = pokerHands.fullHouse;
+    let response = pokerHands[6].fullHouse;
     document.querySelector(
       ".eevee-results"
     ).innerText = `Eevee has ${response}`;
+    eeveeHand.push(pokerHands[6]);
+    console.log(eeveeHand);
   }
   // flush
   if (
@@ -692,10 +713,12 @@ function checkHandEevee() {
     card1s === card4s &&
     card1s === card5s
   ) {
-    let response = pokerHands.flush;
+    let response = pokerHands[5].flush;
     document.querySelector(
       ".eevee-results"
     ).innerText = `Eevee has ${response}`;
+    eeveeHand.push(pokerHands[5]);
+    console.log(eeveeHand);
   }
   // straight
   // three of a kind
@@ -711,10 +734,12 @@ function checkHandEevee() {
     (card2f === card4f && card2f === card5f) ||
     (card3f === card4f && card3f === card5f)
   ) {
-    let response = pokerHands.threeOfAKind;
+    let response = pokerHands[3].threeOfAKind;
     document.querySelector(
       ".eevee-results"
     ).innerText = `Eevee has ${response}`;
+    eeveeHand.push(pokerHands[3]);
+    console.log(eeveeHand);
   }
   // two pairs
   else if (
@@ -727,10 +752,12 @@ function checkHandEevee() {
       card2f === card5f) &&
     (card3f === card4f || card3f === card5f || card4f === card5f)
   ) {
-    let response = pokerHands.twoPair;
+    let response = pokerHands[2].twoPair;
     document.querySelector(
       ".eevee-results"
     ).innerText = `Eevee has ${response}`;
+    eeveeHand.push(pokerHands[2]);
+    console.log(eeveeHand);
   }
   // one pair
   else if (
@@ -745,16 +772,33 @@ function checkHandEevee() {
     card3f === card5f ||
     card4f === card5f
   ) {
-    let response = pokerHands.pair;
+    let response = pokerHands[1].pair;
     document.querySelector(
       ".eevee-results"
     ).innerText = `Eevee has ${response}`;
+    eeveeHand.push(pokerHands[1]);
+    console.log(eeveeHand);
   }
   // high card
   else {
-    let response = pokerHands.highCard;
+    let response = pokerHands[0].highCard;
     document.querySelector(
       ".eevee-results"
     ).innerText = `Eevee has ${response}`;
+    eeveeHand.push(pokerHands[0]);
+    console.log(eeveeHand);
+  }
+}
+
+function checkWinner() {
+  if (pikachuHand[0].strength > eeveeHand[0].strength) {
+    document.querySelector(".winner").innerText = "Pikachu wins!!";
+    console.log(`Pikachu wins!`);
+  } else if (eeveeHand[0].strength > pikachuHand[0].strength) {
+    document.querySelector(".winner").innerText = "Eevee wins!!";
+    console.log(`Eevee wins!`);
+  } else {
+    document.querySelector(".winner").innerText = "It's a draw";
+    console.log(`It's a draw!`);
   }
 }
