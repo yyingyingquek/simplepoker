@@ -1,6 +1,6 @@
 "use strict";
 
-// there is currently only two players, and names will be pikachu and lucario
+// there is currently only two players, and names will be pikachu and eevee
 
 const players = [];
 function player(id, playerName) {
@@ -530,6 +530,33 @@ function checkHandPikachu() {
     ).innerText = `Pikachu has ${response}`;
   }
   // full house
+  else if (
+    ((card1f === card2f && card1f === card3f) ||
+      (card1f === card2f && card1f === card4f) ||
+      (card1f === card2f && card1f === card5f) ||
+      (card1f === card3f && card1f === card4f) ||
+      (card1f === card3f && card1f === card5f) ||
+      (card1f === card4f && card1f === card5f) ||
+      (card2f === card3f && card2f === card4f) ||
+      (card2f === card3f && card2f === card5f) ||
+      (card2f === card4f && card2f === card5f) ||
+      (card3f === card4f && card3f === card5f)) &&
+    (card1f === card2f ||
+      card1f === card3f ||
+      card1f === card4f ||
+      card1f === card5f ||
+      card2f === card3f ||
+      card2f === card4f ||
+      card2f === card5f ||
+      card3f === card4f ||
+      card3f === card5f ||
+      card4f === card5f)
+  ) {
+    let response = pokerHands.fullHouse;
+    document.querySelector(
+      ".pikachu-results"
+    ).innerText = `Pikachu has ${response}`;
+  }
   // flush
   if (
     card1s === card2s &&
@@ -544,9 +571,62 @@ function checkHandPikachu() {
   }
   // straight
   // three of a kind
-  if (card1f === card2f && card1f === card3f) {
+  else if (
+    (card1f === card2f && card1f === card3f) ||
+    (card1f === card2f && card1f === card4f) ||
+    (card1f === card2f && card1f === card5f) ||
+    (card1f === card3f && card1f === card4f) ||
+    (card1f === card3f && card1f === card5f) ||
+    (card1f === card4f && card1f === card5f) ||
+    (card2f === card3f && card2f === card4f) ||
+    (card2f === card3f && card2f === card5f) ||
+    (card2f === card4f && card2f === card5f) ||
+    (card3f === card4f && card3f === card5f)
+  ) {
+    let response = pokerHands.threeOfAKind;
+    document.querySelector(
+      ".pikachu-results"
+    ).innerText = `Pikachu has ${response}`;
   }
   // two pairs
+  else if (
+    (card1f === card2f ||
+      card1f === card3f ||
+      card1f === card4f ||
+      card1f === card5f ||
+      card2f === card3f ||
+      card2f === card4f ||
+      card2f === card5f) &&
+    (card3f === card4f || card3f === card5f || card4f === card5f)
+  ) {
+    let response = pokerHands.twoPair;
+    document.querySelector(
+      ".pikachu-results"
+    ).innerText = `Pikachu has ${response}`;
+  }
   // one pair
+  else if (
+    card1f === card2f ||
+    card1f === card3f ||
+    card1f === card4f ||
+    card1f === card5f ||
+    card2f === card3f ||
+    card2f === card4f ||
+    card2f === card5f ||
+    card3f === card4f ||
+    card3f === card5f ||
+    card4f === card5f
+  ) {
+    let response = pokerHands.pair;
+    document.querySelector(
+      ".pikachu-results"
+    ).innerText = `Pikachu has ${response}`;
+  }
   // high card
+  else {
+    let response = pokerHands.highCard;
+    document.querySelector(
+      ".pikachu-results"
+    ).innerText = `Pikachu has ${response}`;
+  }
 }
