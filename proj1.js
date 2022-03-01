@@ -115,22 +115,22 @@ document.querySelector(".check").addEventListener("click", dealCommunityCards);
 
 // add div for btn & btn for player 1
 // not sure why not working so leave it first
-function addForPlayers(e) {
-  if (e.target === document.querySelector(".check")) {
-    const cardA = document.querySelector(".add-for-players");
-    // const cardB = document.querySelector("#card-b").innerText;
-    // const cardC = document.querySelector("#card-c").innerText;
-    // const cardD = document.querySelector("#card-d").innerText;
-    // const cardE = document.querySelector("#card-e").innerText;
+// function addForPlayers(e) {
+//   if (e.target === document.querySelector(".check")) {
+//     const cardA = document.querySelector(".add-for-players");
+//     // const cardB = document.querySelector("#card-b").innerText;
+//     // const cardC = document.querySelector("#card-c").innerText;
+//     // const cardD = document.querySelector("#card-d").innerText;
+//     // const cardE = document.querySelector("#card-e").innerText;
 
-    const addForP1Btn1 = document.createElement("button");
-    const addNewDiv1 = document.createElement("div");
-    addForP1Btn1.className = "player1-add";
-    addForP1Btn1.textContent = "Add for Pikachu";
-    cardA.appendChild(addNewDiv1);
-    addNewDiv1.appendChild(addForP1Btn1);
-  }
-}
+//     const addForP1Btn1 = document.createElement("button");
+//     const addNewDiv1 = document.createElement("div");
+//     addForP1Btn1.className = "player1-add";
+//     addForP1Btn1.textContent = "Add for Pikachu";
+//     cardA.appendChild(addNewDiv1);
+//     addNewDiv1.appendChild(addForP1Btn1);
+//   }
+// }
 // // deal turn cards
 // if there is time
 // function dealTurn(e) {
