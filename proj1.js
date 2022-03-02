@@ -133,56 +133,6 @@ function dealCommunityCards(e) {
 }
 document.querySelector(".deal").addEventListener("click", dealCommunityCards);
 
-// add div for btn & btn for player 1
-// not sure why not working so leave it first
-// function addForPlayers(e) {
-//   if (e.target === document.querySelector(".check")) {
-//     const cardA = document.querySelector(".add-for-players");
-//     // const cardB = document.querySelector("#card-b").innerText;
-//     // const cardC = document.querySelector("#card-c").innerText;
-//     // const cardD = document.querySelector("#card-d").innerText;
-//     // const cardE = document.querySelector("#card-e").innerText;
-
-//     const addForP1Btn1 = document.createElement("button");
-//     const addNewDiv1 = document.createElement("div");
-//     addForP1Btn1.className = "player1-add";
-//     addForP1Btn1.textContent = "Add for Pikachu";
-//     cardA.appendChild(addNewDiv1);
-//     addNewDiv1.appendChild(addForP1Btn1);
-//   }
-// }
-// // deal turn cards
-// if there is time
-// function dealTurn(e) {
-//   e.preventDefault();
-//   if (e.target === document.querySelector(".check")) {
-//     document
-//       .querySelector(".check")
-//       .removeEventListener("click", dealCommunityCards);
-
-//     document
-//       .querySelector(".check")
-//       .addEventListener("click", dealCommunityCards);
-//     // burn 1 card first before dealing
-//     deck.shift();
-//     // deal here
-//     document.querySelector("#card-d").innerHTML = deck.pop();
-//   }
-//   console.log(deck);
-// }
-
-// // deal river cards
-// function dealRiver(e) {
-//   e.preventDefault();
-//   if (e.target === document.querySelector(".check")) {
-//     // burn 1 card first before dealing
-//     deck.shift();
-//     // deal here
-//     document.querySelector("#card-e").innerHTML = deck.pop();
-//   }
-//   console.log(deck);
-// }
-
 function startGame() {
   player(1, "Pikachu");
   player(2, "Eevee");
@@ -207,7 +157,7 @@ function startGame() {
   console.log(deck[0]);
 }
 
-// restarting game
+// restart game
 function restart(e) {
   deck = [];
   p1Hand = [];
@@ -226,6 +176,9 @@ function restart(e) {
   const removeBlack = document.querySelectorAll(".card.black");
   removeRed.forEach((e) => e.remove());
   removeBlack.forEach((e) => e.remove());
+  document.querySelector(".pikachu-results").innerText = "";
+  document.querySelector(".eevee-results").innerText = "";
+  document.querySelector(".winner").innerText = "";
 
   dealCardsToPlayers();
 }
@@ -600,7 +553,6 @@ function checkHandPikachu() {
       ".pikachu-results"
     ).innerText = `Pikachu has ${response}`;
     pikachuHand.push(pokerHands[7]);
-    console.log(pikachuHand);
   }
   // full house
   else if (
@@ -620,7 +572,6 @@ function checkHandPikachu() {
       ".pikachu-results"
     ).innerText = `Pikachu has ${response}`;
     pikachuHand.push(pokerHands[6]);
-    console.log(pikachuHand);
   }
   // flush
   else if (
@@ -634,17 +585,16 @@ function checkHandPikachu() {
       ".pikachu-results"
     ).innerText = `Pikachu has ${response}`;
     pikachuHand.push(pokerHands[5]);
-    console.log(pikachuHand);
   }
   // straight
   else if (
     (card1v === card2v - 1 &&
-      card1v === card3v - 2 &&
-      card1v === card4v - 3 &&
-      card1v === card5v - 4) ||
-    (card1v + 4 === card5v &&
-      card2v + 3 === card5v &&
-      card3v + 2 === card5v &&
+      card2v === card3v - 1 &&
+      card3v === card4v - 1 &&
+      card4v === card5v - 1) ||
+    (card1v + 1 === card2v &&
+      card2v + 1 === card3v &&
+      card3v + 1 === card4v &&
       card4v + 1 === card5v)
   ) {
     let response = pokerHands[4].straight;
@@ -652,7 +602,6 @@ function checkHandPikachu() {
       ".pikachu-results"
     ).innerText = `Pikachu has ${response}`;
     pikachuHand.push(pokerHands[4]);
-    console.log(pikachuHand);
   }
   // three of a kind
   else if (
@@ -672,7 +621,6 @@ function checkHandPikachu() {
       ".pikachu-results"
     ).innerText = `Pikachu has ${response}`;
     pikachuHand.push(pokerHands[3]);
-    console.log(pikachuHand);
   }
   // two pairs
   else if (
@@ -690,7 +638,6 @@ function checkHandPikachu() {
       ".pikachu-results"
     ).innerText = `Pikachu has ${response}`;
     pikachuHand.push(pokerHands[2]);
-    console.log(pikachuHand);
   }
   // one pair
   else if (
@@ -710,7 +657,6 @@ function checkHandPikachu() {
       ".pikachu-results"
     ).innerText = `Pikachu has ${response}`;
     pikachuHand.push(pokerHands[1]);
-    console.log(pikachuHand);
   }
   // high card
   else {
@@ -719,8 +665,8 @@ function checkHandPikachu() {
       ".pikachu-results"
     ).innerText = `Pikachu has ${response}`;
     pikachuHand.push(pokerHands[0]);
-    console.log(pikachuHand);
   }
+  console.log(pikachuHand);
 }
 
 function checkHandEevee() {
@@ -754,7 +700,6 @@ function checkHandEevee() {
       ".eevee-results"
     ).innerText = `Eevee has ${response}`;
     eeveeHand.push(pokerHands[7]);
-    console.log(eeveeHand);
   }
   // full house
   else if (
@@ -774,7 +719,6 @@ function checkHandEevee() {
       ".eevee-results"
     ).innerText = `Eevee has ${response}`;
     eeveeHand.push(pokerHands[6]);
-    console.log(eeveeHand);
   }
   // flush
   else if (
@@ -788,7 +732,6 @@ function checkHandEevee() {
       ".eevee-results"
     ).innerText = `Eevee has ${response}`;
     eeveeHand.push(pokerHands[5]);
-    console.log(eeveeHand);
   }
   // straight
   else if (
@@ -802,7 +745,6 @@ function checkHandEevee() {
       ".eevee-results"
     ).innerText = `eevee has ${response}`;
     eeveeHand.push(pokerHands[4]);
-    console.log(eeveeHand);
   }
   // three of a kind
   else if (
@@ -822,7 +764,6 @@ function checkHandEevee() {
       ".eevee-results"
     ).innerText = `Eevee has ${response}`;
     eeveeHand.push(pokerHands[3]);
-    console.log(eeveeHand);
   }
   // two pairs
   else if (
@@ -840,7 +781,6 @@ function checkHandEevee() {
       ".eevee-results"
     ).innerText = `Eevee has ${response}`;
     eeveeHand.push(pokerHands[2]);
-    console.log(eeveeHand);
   }
   // one pair
   else if (
@@ -860,7 +800,6 @@ function checkHandEevee() {
       ".eevee-results"
     ).innerText = `Eevee has ${response}`;
     eeveeHand.push(pokerHands[1]);
-    console.log(eeveeHand);
   }
   // high card
   else {
@@ -869,8 +808,8 @@ function checkHandEevee() {
       ".eevee-results"
     ).innerText = `Eevee has ${response}`;
     eeveeHand.push(pokerHands[0]);
-    console.log(eeveeHand);
   }
+  console.log(eeveeHand);
 }
 
 function checkWinner() {
