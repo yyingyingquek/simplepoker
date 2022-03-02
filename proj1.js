@@ -604,26 +604,16 @@ function checkHandPikachu() {
   }
   // full house
   else if (
-    ((card1f === card2f && card1f === card3f) ||
-      (card1f === card2f && card1f === card4f) ||
-      (card1f === card2f && card1f === card5f) ||
-      (card1f === card3f && card1f === card4f) ||
-      (card1f === card3f && card1f === card5f) ||
-      (card1f === card4f && card1f === card5f) ||
-      (card2f === card3f && card2f === card4f) ||
-      (card2f === card3f && card2f === card5f) ||
-      (card2f === card4f && card2f === card5f) ||
-      (card3f === card4f && card3f === card5f)) &&
-    (card1f === card2f ||
-      card1f === card3f ||
-      card1f === card4f ||
-      card1f === card5f ||
-      card2f === card3f ||
-      card2f === card4f ||
-      card2f === card5f ||
-      card3f === card4f ||
-      card3f === card5f ||
-      card4f === card5f)
+    (card1f === card2f && card1f === card3f && card4f === card5f) ||
+    (card1f === card2f && card1f === card4f && card3f === card5f) ||
+    (card1f === card2f && card1f === card5f && card3f === card4f) ||
+    (card1f === card3f && card1f === card4f && card2f === card5f) ||
+    (card1f === card3f && card1f === card5f && card2f === card4f) ||
+    (card1f === card4f && card1f === card5f && card2f === card3f) ||
+    (card2f === card3f && card2f === card4f && card1f === card5f) ||
+    (card2f === card3f && card2f === card5f && card1f === card4f) ||
+    (card1f === card4f && card1f === card5f && card1f === card3f) ||
+    (card3f === card4f && card3f === card5f && card1f === card2f)
   ) {
     let response = pokerHands[6].fullHouse;
     document.querySelector(
@@ -768,26 +758,16 @@ function checkHandEevee() {
   }
   // full house
   else if (
-    ((card1f === card2f && card1f === card3f) ||
-      (card1f === card2f && card1f === card4f) ||
-      (card1f === card2f && card1f === card5f) ||
-      (card1f === card3f && card1f === card4f) ||
-      (card1f === card3f && card1f === card5f) ||
-      (card1f === card4f && card1f === card5f) ||
-      (card2f === card3f && card2f === card4f) ||
-      (card2f === card3f && card2f === card5f) ||
-      (card2f === card4f && card2f === card5f) ||
-      (card3f === card4f && card3f === card5f)) &&
-    (card1f === card2f ||
-      card1f === card3f ||
-      card1f === card4f ||
-      card1f === card5f ||
-      card2f === card3f ||
-      card2f === card4f ||
-      card2f === card5f ||
-      card3f === card4f ||
-      card3f === card5f ||
-      card4f === card5f)
+    (card1f === card2f && card1f === card3f && card4f === card5f) ||
+    (card1f === card2f && card1f === card4f && card3f === card5f) ||
+    (card1f === card2f && card1f === card5f && card3f === card4f) ||
+    (card1f === card3f && card1f === card4f && card2f === card5f) ||
+    (card1f === card3f && card1f === card5f && card2f === card4f) ||
+    (card1f === card4f && card1f === card5f && card2f === card3f) ||
+    (card2f === card3f && card2f === card4f && card1f === card5f) ||
+    (card2f === card3f && card2f === card5f && card1f === card4f) ||
+    (card1f === card4f && card1f === card5f && card1f === card3f) ||
+    (card3f === card4f && card3f === card5f && card1f === card2f)
   ) {
     let response = pokerHands[6].fullHouse;
     document.querySelector(
@@ -895,13 +875,31 @@ function checkHandEevee() {
 
 function checkWinner() {
   if (pikachuHand[0].strength > eeveeHand[0].strength) {
-    document.querySelector(".winner").innerText = "Pikachu wins!!";
-    console.log(`Pikachu wins!`);
+    const pikachuImg = document.createElement("img");
+    pikachuImg.setAttribute(
+      "src",
+      "https://data.whicdn.com/images/209640068/original.gif"
+    );
+    pikachuImg.width = 150;
+    pikachuImg.height = 100;
+    document.querySelector(".winner").appendChild(pikachuImg);
   } else if (eeveeHand[0].strength > pikachuHand[0].strength) {
-    document.querySelector(".winner").innerText = "Eevee wins!!";
-    console.log(`Eevee wins!`);
+    const eeveeImg = document.createElement("img");
+    eeveeImg.setAttribute(
+      "src",
+      "https://c.tenor.com/Dr_AK1qQK84AAAAC/cute-eevee.gif"
+    );
+    eeveeImg.width = 150;
+    eeveeImg.height = 150;
+    document.querySelector(".winner").appendChild(eeveeImg);
   } else {
-    document.querySelector(".winner").innerText = "It's a draw";
-    console.log(`It's a draw!`);
+    const drawImg = document.createElement("img");
+    drawImg.setAttribute(
+      "src",
+      "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/c5b47ed8-60ab-4d7a-9aa9-78ff1cbeefa3/d4hg7wd-12ee35ba-7050-41b4-bf67-0df01db902f8.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2M1YjQ3ZWQ4LTYwYWItNGQ3YS05YWE5LTc4ZmYxY2JlZWZhM1wvZDRoZzd3ZC0xMmVlMzViYS03MDUwLTQxYjQtYmY2Ny0wZGYwMWRiOTAyZjgucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.H0hHf2toxWLc9iaU23iGD8Afk8JPN0RMRNt53q30JLc"
+    );
+    drawImg.width = 150;
+    drawImg.height = 150;
+    document.querySelector(".winner").appendChild(drawImg);
   }
 }
