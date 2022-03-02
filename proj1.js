@@ -54,8 +54,8 @@ function shuffleDeck() {
   console.log("shuffled");
 }
 
-const p1Hand = [];
-const p2Hand = [];
+let p1Hand = [];
+let p2Hand = [];
 
 // deal 2 cards each to players, pre-flop
 function dealCardsToPlayers() {
@@ -72,10 +72,6 @@ function dealCardsToPlayers() {
   p1Hand.push(cardPlaceholder1, cardPlaceholder2);
   p2Hand.push(cardPlaceholder3, cardPlaceholder4);
 
-  // card1.innerHTML = Object.values(cardPlaceholder1);
-  // card2.innerHTML = Object.values(cardPlaceholder2);
-  // card3.innerHTML = Object.values(cardPlaceholder3);
-  // card4.innerHTML = Object.values(cardPlaceholder4);
   card1.appendChild(cardPlaceholder1.getHTML());
   card2.appendChild(cardPlaceholder2.getHTML());
   card3.appendChild(cardPlaceholder3.getHTML());
@@ -88,50 +84,49 @@ function dealCardsToPlayers() {
 
 // deal community cards, for now deal all 5 first and check options only for both players
 function dealCommunityCards(e) {
-  e.preventDefault();
-  if (e.target === document.querySelector(".deal")) {
-    // burn 1 card first before dealing
-    deck.shift();
-    // deal here
-    const cardA = document.querySelector("#card-a");
-    const cardB = document.querySelector("#card-b");
-    const cardC = document.querySelector("#card-c");
-    const cardD = document.querySelector("#card-d");
-    const cardE = document.querySelector("#card-e");
+  // e.preventDefault();
+  // burn 1 card first before dealing
+  deck.shift();
+  // deal here
+  const cardA = document.querySelector("#card-a");
+  const cardB = document.querySelector("#card-b");
+  const cardC = document.querySelector("#card-c");
+  const cardD = document.querySelector("#card-d");
+  const cardE = document.querySelector("#card-e");
 
-    const cardPlaceholderA = deck.pop();
-    const cardPlaceholderB = deck.pop();
-    const cardPlaceholderC = deck.pop();
-    const cardPlaceholderD = deck.pop();
-    const cardPlaceholderE = deck.pop();
+  const cardPlaceholderA = deck.pop();
+  const cardPlaceholderB = deck.pop();
+  const cardPlaceholderC = deck.pop();
+  const cardPlaceholderD = deck.pop();
+  const cardPlaceholderE = deck.pop();
 
-    p1Hand.push(
-      cardPlaceholderA,
-      cardPlaceholderB,
-      cardPlaceholderC,
-      cardPlaceholderD,
-      cardPlaceholderE
-    );
-    p2Hand.push(
-      cardPlaceholderA,
-      cardPlaceholderB,
-      cardPlaceholderC,
-      cardPlaceholderD,
-      cardPlaceholderE
-    );
+  p1Hand.push(
+    cardPlaceholderA,
+    cardPlaceholderB,
+    cardPlaceholderC,
+    cardPlaceholderD,
+    cardPlaceholderE
+  );
+  p2Hand.push(
+    cardPlaceholderA,
+    cardPlaceholderB,
+    cardPlaceholderC,
+    cardPlaceholderD,
+    cardPlaceholderE
+  );
 
-    // print out the card values
-    // cardA.innerHTML = Object.values(cardPlaceholderA);
-    // cardB.innerHTML = Object.values(cardPlaceholderB);
-    // cardC.innerHTML = Object.values(cardPlaceholderC);
-    // cardD.innerHTML = Object.values(cardPlaceholderD);
-    // cardE.innerHTML = Object.values(cardPlaceholderE);
-    cardA.appendChild(cardPlaceholderA.getHTML());
-    cardB.appendChild(cardPlaceholderB.getHTML());
-    cardC.appendChild(cardPlaceholderC.getHTML());
-    cardD.appendChild(cardPlaceholderD.getHTML());
-    cardE.appendChild(cardPlaceholderE.getHTML());
-  }
+  // print out the card values
+  // cardA.innerHTML = Object.values(cardPlaceholderA);
+  // cardB.innerHTML = Object.values(cardPlaceholderB);
+  // cardC.innerHTML = Object.values(cardPlaceholderC);
+  // cardD.innerHTML = Object.values(cardPlaceholderD);
+  // cardE.innerHTML = Object.values(cardPlaceholderE);
+  cardA.appendChild(cardPlaceholderA.getHTML());
+  cardB.appendChild(cardPlaceholderB.getHTML());
+  cardC.appendChild(cardPlaceholderC.getHTML());
+  cardD.appendChild(cardPlaceholderD.getHTML());
+  cardE.appendChild(cardPlaceholderE.getHTML());
+
   console.log(p1Hand);
   console.log(p2Hand);
   console.log(deck);
@@ -212,14 +207,37 @@ function startGame() {
   console.log(deck[0]);
 }
 
+// restarting game
+function restart(e) {
+  deck = [];
+  p1Hand = [];
+  p2Hand = [];
+  player1Hand = [];
+  player1Object = [];
+  player2Hand = [];
+  player2Object = [];
+  pikachuHand = [];
+  eeveeHand = [];
+
+  createDeck();
+  shuffleDeck();
+
+  const removeRed = document.querySelectorAll(".card.red");
+  const removeBlack = document.querySelectorAll(".card.black");
+  removeRed.forEach((e) => e.remove());
+  removeBlack.forEach((e) => e.remove());
+
+  dealCardsToPlayers();
+}
+
 ////////////////////////////////
 // to win
 ////////////////////////////////
 
 // for player 1
 // if chosing from own hand
-const player1Hand = [];
-const player1Object = [];
+let player1Hand = [];
+let player1Object = [];
 document
   .querySelector("#card-1")
   .addEventListener("click", function player1(e) {
@@ -378,8 +396,8 @@ document.querySelector("#pikachu-add5").addEventListener("click", (e) => {
 
 // for player 2
 // if chosing from own hand
-const player2Hand = [];
-const player2Object = [];
+let player2Hand = [];
+let player2Object = [];
 document.querySelector("#card-3").addEventListener("click", (e) => {
   const player2Selected = document.querySelector(".player2-selected");
   const printPlayer2Hand = document.createElement("div");
@@ -535,7 +553,7 @@ document.querySelector("#eevee-add5").addEventListener("click", (e) => {
 
 // comparing best 5 cards
 
-const pokerHands = [
+let pokerHands = [
   { highCard: "A high card", strength: 0 },
   { pair: "A pair", strength: 1 },
   { twoPair: "Two pairs", strength: 2 },
@@ -548,8 +566,8 @@ const pokerHands = [
   { royalFlush: "ROYAL FLUSH!!!!!!", strength: 9 },
 ];
 
-const pikachuHand = [];
-const eeveeHand = [];
+let pikachuHand = [];
+let eeveeHand = [];
 
 function checkHandPikachu() {
   const card1s = player1Object[0].suit; // check card 1 suit
@@ -630,10 +648,14 @@ function checkHandPikachu() {
   }
   // straight
   else if (
-    card1v === card2v - 1 &&
-    card1v === card3v - 2 &&
-    card1v === card4v - 3 &&
-    card1v === card5v - 4
+    (card1v === card2v - 1 &&
+      card1v === card3v - 2 &&
+      card1v === card4v - 3 &&
+      card1v === card5v - 4) ||
+    (card1v + 4 === card5v &&
+      card2v + 3 === card5v &&
+      card3v + 2 === card5v &&
+      card4v + 1 === card5v)
   ) {
     let response = pokerHands[4].straight;
     document.querySelector(
