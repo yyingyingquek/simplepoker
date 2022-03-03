@@ -114,6 +114,8 @@ function dealCommunityCards(e) {
   cardC.appendChild(cardPlaceholderC.getHTML());
   cardD.appendChild(cardPlaceholderD.getHTML());
   cardE.appendChild(cardPlaceholderE.getHTML());
+
+  document.querySelector(".add-for-players").style.visibility = "visible";
 }
 document.querySelector(".deal").addEventListener("click", dealCommunityCards);
 
@@ -138,6 +140,8 @@ function startGame() {
   createDeck();
   shuffleDeck();
   dealCardsToPlayers();
+
+  document.querySelector(".start-game").style.visibility = "hidden";
 }
 
 // restart game
@@ -163,6 +167,7 @@ function restart(e) {
   document.querySelector(".eevee-results").innerText = "";
   document.querySelector(".winner").innerText = "";
 
+  document.querySelector(".add-for-players").style.visibility = "hidden";
   dealCardsToPlayers();
 }
 
