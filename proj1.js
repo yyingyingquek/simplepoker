@@ -466,15 +466,24 @@ function checkHandPikachu() {
   const card5v = player1Object[4].value;
   // royal flush
   if (
-    card1s === card2s &&
-    card1s === card3s &&
-    card1s === card4s &&
-    card1s === card5s &&
-    card1v === 14 &&
-    card2v === 13 &&
-    card3v === 12 &&
-    card4v === 11 &&
-    card5v === 10
+    (card1s === card2s &&
+      card1s === card3s &&
+      card1s === card4s &&
+      card1s === card5s &&
+      card1v === 14 &&
+      card2v === 13 &&
+      card3v === 12 &&
+      card4v === 11 &&
+      card5v === 10) ||
+    (card1s === card2s &&
+      card1s === card3s &&
+      card1s === card4s &&
+      card1s === card5s &&
+      card1v === 10 &&
+      card2v === 11 &&
+      card3v === 12 &&
+      card4v === 13 &&
+      card5v === 14)
   ) {
     let response = pokerHands[9].royalFlush;
     document.querySelector(
@@ -492,7 +501,11 @@ function checkHandPikachu() {
       card2v === card3v - 1 &&
       card3v === card4v - 1 &&
       card4v === card5v - 1) ||
-    (card1v + 1 === card2v &&
+    (card1s === card2s &&
+      card1s === card3s &&
+      card1s === card4s &&
+      card1s === card5s &&
+      card1v + 1 === card2v &&
       card2v + 1 === card3v &&
       card3v + 1 === card4v &&
       card4v + 1 === card5v)
@@ -648,15 +661,24 @@ function checkHandEevee() {
   const card5v = player2Object[4].value;
   // royal flush
   if (
-    card1s === card2s &&
-    card1s === card3s &&
-    card1s === card4s &&
-    card1s === card5s &&
-    card1v === 14 &&
-    card2v === 13 &&
-    card3v === 12 &&
-    card4v === 11 &&
-    card5v === 10
+    (card1s === card2s &&
+      card1s === card3s &&
+      card1s === card4s &&
+      card1s === card5s &&
+      card1v === 14 &&
+      card2v === 13 &&
+      card3v === 12 &&
+      card4v === 11 &&
+      card5v === 10) ||
+    (card1s === card2s &&
+      card1s === card3s &&
+      card1s === card4s &&
+      card1s === card5s &&
+      card1v === 10 &&
+      card2v === 11 &&
+      card3v === 12 &&
+      card4v === 13 &&
+      card5v === 14)
   ) {
     let response = pokerHands[9].royalFlush;
     document.querySelector(
@@ -674,7 +696,11 @@ function checkHandEevee() {
       card2v === card3v - 1 &&
       card3v === card4v - 1 &&
       card4v === card5v - 1) ||
-    (card1v + 1 === card2v &&
+    (card1s === card2s &&
+      card1s === card3s &&
+      card1s === card4s &&
+      card1s === card5s &&
+      card1v + 1 === card2v &&
       card2v + 1 === card3v &&
       card3v + 1 === card4v &&
       card4v + 1 === card5v)
@@ -745,7 +771,7 @@ function checkHandEevee() {
     let response = pokerHands[4].straight;
     document.querySelector(
       ".eevee-results"
-    ).innerText = `eevee has ${response}`;
+    ).innerText = `Eevee has ${response}`;
     eeveeHand.push(pokerHands[4]);
   }
   // three of a kind
