@@ -116,8 +116,8 @@ function dealCommunityCards(e) {
   cardE.appendChild(cardPlaceholderE.getHTML());
 
   document.querySelector(".add-for-players").style.visibility = "visible";
+  document.querySelector(".deal").style.visibility = "hidden";
 }
-document.querySelector(".deal").addEventListener("click", dealCommunityCards);
 
 function startGame() {
   player(1, "Pikachu");
@@ -168,6 +168,7 @@ function restart(e) {
   document.querySelector(".winner").innerText = "";
 
   document.querySelector(".add-for-players").style.visibility = "hidden";
+  document.querySelector(".deal").style.visibility = "visible";
   dealCardsToPlayers();
 }
 
@@ -193,6 +194,7 @@ document
     player1Object.push(chosen1Object);
 
     player1Selected.appendChild(p1Hand[0].getHTML());
+    // document.querySelector("#card-1").style.display = "hidden";
   });
 
 document
