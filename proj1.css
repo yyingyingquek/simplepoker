@@ -1,20 +1,19 @@
 * {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  color: #3a3b3c;
 }
 
 .poker-room {
   width: 100%;
   height: 100%;
-  margin: 0;
-  padding: 0;
 }
 
 .poker-table {
   height: 400px;
   width: 800px;
-  background-color: green;
-  border: solid 20px #333;
+  background-color: #35654d;
+  border: solid 20px #3a3b3c;
   margin: 0 auto;
   border-radius: 200px;
   position: relative;
@@ -24,40 +23,28 @@
 
 #name-1,
 #name-2 {
-  /* border: 1px solid blue; */
   height: 1em;
-  justify-content: center;
-  align-items: center;
+  color: #000000;
   text-align: center;
 }
 
 .button-container {
-  /* border: 1px solid red; */
-  width: 700px;
+  width: 800px;
   height: 100px;
-  /* background-color: cornflowerblue; */
   position: relative;
   margin: auto;
   text-align: center;
 }
 
-/* .button-container .buttons {
-  border: 1px solid yellow;
-  text-align: center;
-} */
-
 .poker-table .player {
-  /* border: 1px solid black; */
   position: relative;
   height: 100%;
   text-align: center;
 }
 
 .poker-table .seat {
-  /* border: 1px solid teal; */
   height: 100px;
   width: 100px;
-  /* background-color: red; */
   position: absolute;
 }
 
@@ -65,58 +52,40 @@
   height: 50px;
   width: 100%;
   display: flex;
-  /* border: 1px solid bisque; */
-  /* border-radius: 5px; */
   justify-content: center;
 }
 
 .poker-table .seat.seat-one {
-  /* border: 1px solid palevioletred; */
   right: -00px;
   top: 40%;
 }
 
 .poker-table .seat.seat-one .player .cards {
-  /* border: 1px solid orange; */
   position: absolute;
   right: 100px;
   width: 80px;
 }
 
 .poker-table .seat.seat-two {
-  /* border: 1px solid indigo; */
   left: 5px;
   top: 40%;
 }
 .poker-table .seat.seat-two .player .cards {
-  /* border: 1px solid pink; */
   position: absolute;
   left: 100px;
   width: 80px;
 }
 
-/* #card-1,
-#card-2 {
-  border: 1px solid slateblue;
-}
-
-#card-3,
-#card-4 {
-  border: 1px solid sienna;
-} */
-
 .community-cards {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* border: 1px solid cadetblue; */
 }
 
 .add-for-players {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* border: 1px solid blue; */
   margin: 00px 50px 00px 80px;
 }
 
@@ -125,23 +94,19 @@
 #card-c,
 #card-d,
 #card-e {
-  /* padding: 10px; */
-  /* border: 1px solid aquamarine; */
   margin: 20px 50px 2px 50px;
 }
 
 .player1-selected {
   display: flex;
-  /* border: 1px solid lightcyan; */
   position: relative;
-  top: 100px;
+  top: 96px;
   left: 450px;
   width: 200px;
 }
 
 .player2-selected {
   display: flex;
-  /* border: 1px solid navajowhite; */
   position: absolute;
   top: 220px;
   left: 200px;
@@ -149,7 +114,7 @@
 }
 
 .card {
-  border: 1px solid black;
+  border: 1px solid #3a3b3c;
   margin: 2px;
   border-radius: 3px;
   width: 30px;
@@ -167,4 +132,73 @@
 
 .card.black {
   color: black;
+}
+
+.card.red:hover,
+.card.black:hover {
+  background-color: #3a3b3c;
+}
+
+.start-game,
+.deal,
+.restart,
+.check-pikachu,
+.check-eevee,
+.check-winner {
+  display: inline-block;
+  padding: 0.35em 1.2em;
+  border: 0.1em solid #ffffff;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 0.12em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  text-align: center;
+  transition: all 0.2s;
+}
+.start-game:hover,
+.deal:hover,
+.restart:hover,
+.check-pikachu:hover,
+.check-eevee:hover,
+.check-winner:hover {
+  background-color: #ffffff;
+}
+
+#eevee-add1,
+#pikachu-add1,
+#eevee-add2,
+#pikachu-add2,
+#eevee-add3,
+#pikachu-add3,
+#eevee-add4,
+#pikachu-add4,
+#eevee-add5,
+#pikachu-add5 {
+  display: inline-block;
+  padding: 0.1em 1em;
+  border: 0.1em solid #35654d;
+  margin: 0 0.1em 0.1em 0;
+  border-radius: 0.12em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  color: #3a3b3c;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+#eevee-add1:hover,
+#pikachu-add1:hover,
+#eevee-add2:hover,
+#pikachu-add2:hover,
+#eevee-add3:hover,
+#pikachu-add3:hover,
+#eevee-add4:hover,
+#pikachu-add4:hover,
+#eevee-add5:hover,
+#pikachu-add5:hover {
+  background-color: #35654d;
 }
