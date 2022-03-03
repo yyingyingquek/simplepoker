@@ -41,7 +41,6 @@ function createDeck() {
       deck.push(new Cards(suits[i], icon[i], value[j], face[j]));
     }
   }
-  // console.log(deck);
 }
 
 function shuffleDeck() {
@@ -51,7 +50,6 @@ function shuffleDeck() {
     deck[i] = deck[randomCardIndex];
     deck[randomCardIndex] = tempCard;
   }
-  // console.log("shuffled");
 }
 
 let p1Hand = [];
@@ -76,10 +74,6 @@ function dealCardsToPlayers() {
   card2.appendChild(cardPlaceholder2.getHTML());
   card3.appendChild(cardPlaceholder3.getHTML());
   card4.appendChild(cardPlaceholder4.getHTML());
-
-  // console.log(deck);
-  // console.log(p1Hand);
-  // console.log(p2Hand);
 }
 
 // deal community cards, for now deal all 5 first and check options only for both players
@@ -120,10 +114,6 @@ function dealCommunityCards(e) {
   cardC.appendChild(cardPlaceholderC.getHTML());
   cardD.appendChild(cardPlaceholderD.getHTML());
   cardE.appendChild(cardPlaceholderE.getHTML());
-
-  // console.log(p1Hand);
-  // console.log(p2Hand);
-  // console.log(deck);
 }
 document.querySelector(".deal").addEventListener("click", dealCommunityCards);
 
@@ -148,7 +138,6 @@ function startGame() {
   createDeck();
   shuffleDeck();
   dealCardsToPlayers();
-  // console.log(deck[0]);
 }
 
 // restart game
@@ -198,10 +187,6 @@ document
     player1Hand.push(chosen1);
     player1Object.push(chosen1Object);
 
-    // console.log(player1Hand);
-    // console.log(player1Object);
-    // printPlayer1Hand.innerText = chosen1;
-    // player1Selected.appendChild(printPlayer1Hand);
     player1Selected.appendChild(p1Hand[0].getHTML());
   });
 
@@ -218,10 +203,6 @@ document
     player1Hand.push(chosen2);
     player1Object.push(chosen2Object);
 
-    // console.log(player1Hand);
-    // console.log(player1Object);
-    // printPlayer1Hand.innerText = chosen2;
-    // player1Selected.appendChild(printPlayer1Hand);
     player1Selected.appendChild(p1Hand[1].getHTML());
   });
 
@@ -237,11 +218,6 @@ document.querySelector("#pikachu-add1").addEventListener("click", (e) => {
 
     player1Hand.push(chosenA);
     player1Object.push(chosenAObject);
-    // console.log(player1Hand);
-    // console.log(player1Object);
-
-    // printPlayer1Hand.innerText = chosenA;
-    // player1Selected.appendChild(printPlayer1Hand);
     player1Selected.appendChild(p1Hand[2].getHTML());
   }
   if (player1Hand.length > 5) {
@@ -260,11 +236,6 @@ document.querySelector("#pikachu-add2").addEventListener("click", (e) => {
 
     player1Hand.push(chosenB);
     player1Object.push(chosenBObject);
-    // console.log(player1Hand);
-    // console.log(player1Object);
-
-    // printPlayer1Hand.innerText = chosenB;
-    // player1Selected.appendChild(printPlayer1Hand);
     player1Selected.appendChild(p1Hand[3].getHTML());
   }
   if (player1Hand.length > 5) {
@@ -283,11 +254,6 @@ document.querySelector("#pikachu-add3").addEventListener("click", (e) => {
 
     player1Hand.push(chosenC);
     player1Object.push(chosenCObject);
-    // console.log(player1Hand);
-    // console.log(player1Object);
-
-    // printPlayer1Hand.innerText = chosenC;
-    // player1Selected.appendChild(printPlayer1Hand);
     player1Selected.appendChild(p1Hand[4].getHTML());
   }
   if (player1Hand.length > 5) {
@@ -306,11 +272,6 @@ document.querySelector("#pikachu-add4").addEventListener("click", (e) => {
 
     player1Hand.push(chosenD);
     player1Object.push(chosenDObject);
-    // console.log(player1Hand);
-    // console.log(player1Object);
-
-    // printPlayer1Hand.innerText = chosenD;
-    // player1Selected.appendChild(printPlayer1Hand);
     player1Selected.appendChild(p1Hand[5].getHTML());
   }
   if (player1Hand.length > 5) {
@@ -329,11 +290,6 @@ document.querySelector("#pikachu-add5").addEventListener("click", (e) => {
 
     player1Hand.push(chosenE);
     player1Object.push(chosenEObject);
-    // console.log(player1Hand);
-    // console.log(player1Object);
-
-    // printPlayer1Hand.innerText = chosenE;
-    // player1Selected.appendChild(printPlayer1Hand);
     player1Selected.appendChild(p1Hand[6].getHTML());
   }
   if (player1Hand.length > 5) {
@@ -356,10 +312,6 @@ document.querySelector("#card-3").addEventListener("click", (e) => {
   player2Hand.push(chosen1);
   player2Object.push(chosen1Object);
 
-  // console.log(player2Hand);
-  // console.log(player2Object);
-  // printPlayer2Hand.innerText = chosen1;
-  // player2Selected.appendChild(printPlayer2Hand);
   player2Selected.appendChild(p2Hand[0].getHTML());
 });
 
@@ -374,11 +326,6 @@ document.querySelector("#card-4").addEventListener("click", (e) => {
   player2Hand.push(chosen2);
   player2Object.push(chosen2Object);
 
-  // console.log(player2Hand);
-  // console.log(player2Object);
-
-  // printPlayer2Hand.innerText = chosen2;
-  // player2Selected.appendChild(printPlayer2Hand);
   player2Selected.appendChild(p2Hand[1].getHTML());
 });
 
@@ -394,11 +341,7 @@ document.querySelector("#eevee-add1").addEventListener("click", (e) => {
 
     player2Hand.push(chosenA);
     player2Object.push(chosenAObject);
-    // console.log(player2Hand);
-    // console.log(player2Object);
 
-    // printPlayer2Hand.innerText = chosenA;
-    // player2Selected.appendChild(printPlayer2Hand);
     player2Selected.appendChild(p2Hand[2].getHTML());
   }
   if (player2Hand.length > 5) {
@@ -417,11 +360,7 @@ document.querySelector("#eevee-add2").addEventListener("click", (e) => {
 
     player2Hand.push(chosenB);
     player2Object.push(chosenBObject);
-    // console.log(player2Hand);
-    // console.log(player2Object);
 
-    // printPlayer2Hand.innerText = chosenB;
-    // player2Selected.appendChild(printPlayer2Hand);
     player2Selected.appendChild(p2Hand[3].getHTML());
   }
   if (player2Hand.length > 5) {
@@ -440,11 +379,7 @@ document.querySelector("#eevee-add3").addEventListener("click", (e) => {
 
     player2Hand.push(chosenC);
     player2Object.push(chosenCObject);
-    // console.log(player2Hand);
-    // console.log(player2Object);
 
-    // printPlayer2Hand.innerText = chosenC;
-    // player2Selected.appendChild(printPlayer2Hand);
     player2Selected.appendChild(p2Hand[4].getHTML());
   }
   if (player2Hand.length > 5) {
@@ -463,11 +398,7 @@ document.querySelector("#eevee-add4").addEventListener("click", (e) => {
 
     player2Hand.push(chosenD);
     player2Object.push(chosenDObject);
-    // console.log(player2Hand);
-    // console.log(player2Object);
 
-    // printPlayer2Hand.innerText = chosenD;
-    // player2Selected.appendChild(printPlayer2Hand);
     player2Selected.appendChild(p2Hand[5].getHTML());
   }
   if (player2Hand.length > 5) {
@@ -486,11 +417,7 @@ document.querySelector("#eevee-add5").addEventListener("click", (e) => {
 
     player2Hand.push(chosenE);
     player2Object.push(chosenEObject);
-    // console.log(player2Hand);
-    // console.log(player2Object);
 
-    // printPlayer2Hand.innerText = chosenE;
-    // player2Selected.appendChild(printPlayer2Hand);
     player2Selected.appendChild(p2Hand[6].getHTML());
   }
   if (player2Hand.length > 5) {
@@ -532,7 +459,6 @@ function checkHandPikachu() {
   const card5s = player1Object[4].suit;
   const card5f = player1Object[4].face;
   const card5v = player1Object[4].value;
-  console.log(player1Object);
   // royal flush
   if (
     card1s === card2s &&
@@ -697,7 +623,6 @@ function checkHandPikachu() {
     ).innerText = `Pikachu has ${response}`;
     pikachuHand.push(pokerHands[0]);
   }
-  console.log(pikachuHand);
 }
 
 function checkHandEevee() {
@@ -716,7 +641,6 @@ function checkHandEevee() {
   const card5s = player2Object[4].suit;
   const card5f = player2Object[4].face;
   const card5v = player2Object[4].value;
-  console.log(player2Object);
   // royal flush
   if (
     card1s === card2s &&
@@ -882,7 +806,6 @@ function checkHandEevee() {
     ).innerText = `Eevee has ${response}`;
     eeveeHand.push(pokerHands[0]);
   }
-  console.log(eeveeHand);
 }
 
 function checkWinner() {
