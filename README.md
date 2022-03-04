@@ -1,7 +1,12 @@
-# simplepoker
+# Simple Poker
 
-still a work in progress
+A simple poker game done in HTML, CSS and JS.
 
+## Unsolved Problems
+Currently 5 community cards are dealt, instead of the flop-turn-river process.
+Also, there is currently no feature to fold the player's hands.
+
+## Game Play
 There is two players, and the default names are Pikachu and Eevee.
 
 To play:
@@ -11,5 +16,6 @@ To play:
 4. Click 'Check Hand' for both players
 5. Click 'Check Winner'
 
+## Image Source
 Pokemon photos are from bulbapedia.
 Other images src are in the js file.
